@@ -6,7 +6,7 @@ const List = ({ people, handleSingleClick }) => {
       return;
     }
 
-    handleSingleClick(e.target.dataset.id);
+    handleSingleClick(Number(e.target.dataset.id));
   }
 
   return (

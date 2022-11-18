@@ -3,7 +3,7 @@ import data from './data';
 import List from './List';
 
 function deleteItem(arr, clickedId) {
-  const index = arr.findIndex((single) => single.id === Number(clickedId));
+  const index = arr.findIndex((single) => single.id === clickedId);
   return [...arr.slice(0, index), ...arr.slice(index + 1, arr.length)];
 }
 
