@@ -55,7 +55,7 @@ const App = () => {
         </h2>
         <List people={state.people} handleSingleClick={handleDelete} />
         <button className='btn' onClick={handleClick}>
-          {state.people.length === data.length ? 'Clear all' : 'refresh'}
+          {state.people.length > 0 ? 'Clear all' : 'refresh'}
         </button>
       </section>
     </main>
