@@ -18,6 +18,10 @@ function appReducer(state, action) {
       return {
         people: deleteItem(state.people, action.skipItemId),
       };
+    case 'refresh-click':
+      return {
+        people: [...data],
+      };
     default:
       throw new Error('Not gonna run');
   }
@@ -26,11 +30,16 @@ function appReducer(state, action) {
 const ACTION = {
   deleteData: 'delete-data',
   deleteSingleData: 'delete-single-data',
+  refreshData: 'refresh-click',
 };
 
 const App = () => {
   const [state, dispatch] = useReducer(appReducer, { people: data });
   function handleClick() {
+    if (state.people.length < 1) {
+      dispatch({ type: ACTION.refreshData });
+      return;
+    }
     dispatch({ type: ACTION.deleteData });
   }
 
@@ -46,7 +55,7 @@ const App = () => {
         </h2>
         <List people={state.people} handleSingleClick={handleDelete} />
         <button className='btn' onClick={handleClick}>
-          Clear All
+          {state.people.length === data.length ? 'Clear all' : 'refresh'}
         </button>
       </section>
     </main>
